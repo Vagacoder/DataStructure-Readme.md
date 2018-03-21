@@ -1,17 +1,17 @@
 package ch08;
 
-import java.io.IOException;
+import java.io.*;
 
 public class Maze {
 
 	public static void main(String[] args) {
-		
+
 		traverseMaze();
 
 	}
 
-	public static boolean traverseMaze() {
 
+	public static boolean traverseMaze() {
 		int direction; // Counts 1, 2, 3 for the three directions to explore.
 		boolean found; // Will be set to true if we find the tapestry.
 		System.out.println("Step forward & write your name on the ground.");
@@ -28,16 +28,18 @@ public class Maze {
 					found = traverseMaze();
 				System.out.println("Please turn right 90 degrees.");
 			}
-			// You¡¯re now facing the direction from whence you came, so step forward and
+			// You’re now facing the direction from whence you came, so step forward and
 			// turn
 			// around. This will put you in the same spot when the method was activated.
 			System.out.println("Please step forward, then turn 180 degrees.");
 		}
 		return found;
-
 	}
 
-	public static boolean inquire(String query) {
+
+	public static boolean inquire(String query)
+
+	{
 		char answer = 'N';
 		do {
 			System.out.println(query + " [Y or N]");
@@ -52,12 +54,10 @@ public class Maze {
 			answer = Character.toUpperCase(answer);
 		} while ((answer != 'Y') && (answer != 'N'));
 		return (answer == 'Y');
-
 	}
+
 
 	public static boolean deadend() {
-
 		return inquire("Are you facing a wall?") || inquire("Is your name written in front of you?");
 	}
-
 }
