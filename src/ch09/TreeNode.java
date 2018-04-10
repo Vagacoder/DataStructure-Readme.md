@@ -149,6 +149,14 @@ public class TreeNode {
 			}
 		}
 		Integer[] result = { smaller.peek(), larger.peek() };
+		
+		while (!smaller.isEmpty()) {
+			System.out.println(smaller.pop());
+		}
+		System.out.println();
+		while (!larger.isEmpty()) {
+			System.out.println(larger.pop());
+		}
 		return result;
 	}
 

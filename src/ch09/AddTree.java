@@ -46,7 +46,7 @@ public class AddTree {
 
 
 	public Integer[] findRange(double number) {
-		return top.findRange1(number);
+		return top.findRange(number);
 	}
 
 

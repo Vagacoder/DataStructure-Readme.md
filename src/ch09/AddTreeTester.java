@@ -25,11 +25,14 @@ public class AddTreeTester {
 			intArr[i] = i;
 		}
 		tree.addArray(intArr, 0, 99);
-		//tree.top.print(0);
-		Integer[] result = tree.findRange(88.5);
-		for(int i:result) {
-			System.out.println(i);
-		}
+		tree.top.print(0);
+//		Integer[] result = tree.findRange(88.5);
+//		for(int i:result) {
+//			System.out.println(i);
+//		}
+//		
+//		System.out.println();
+//		tree.top.findRange1(88.5);
 
 		// tree.addNode(4);
 		// tree.addNode(2);
