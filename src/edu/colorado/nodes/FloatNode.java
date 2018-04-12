@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // File: FloatNode.java from the package edu.colorado.nodes
 // Complete documentation is available from the FloatNode link in:
 //   http://www.cs.colorado.edu/~main/docs
@@ -63,6 +64,74 @@ public class FloatNode
    }
 
 
+=======
+
+// File: FloatNode.java from the package edu.colorado.nodes
+// Complete documentation is available from the FloatNode link in:
+//   http://www.cs.colorado.edu/~main/docs
+
+package edu.colorado.nodes;
+
+/******************************************************************************
+* A FloatNode provides a node for a linked list with 
+* float data in each node.
+*
+* @note
+*   Lists of nodes can be made of any length, limited only by the amount of
+*   free memory in the heap. But beyond Integer.MAX_VALUE (2,147,483,647),
+*   the answer from listLength is incorrect because of arithmetic
+*   overflow. 
+*
+* @see
+*   <A HREF="../../../../edu/colorado/nodes/FloatNode.java">
+*   Java Source Code for this class
+*   (www.cs.colorado.edu/~main/edu/colorado/nodes/FloatNode.java) </A>
+*
+* @author Michael Main 
+*   <A HREF="mailto:main@colorado.edu"> (main@colorado.edu) </A>
+*
+* @version Feb 10, 2016
+*
+* @see Node
+* @see BooleanNode
+* @see ByteNode
+* @see CharNode
+* @see DoubleNode
+* @see IntNode
+* @see LongNode
+* @see ShortNode
+******************************************************************************/
+public class FloatNode
+{
+   // Invariant of the FloatNode class:
+   //   1. The node's float data is in the instance variable data.
+   //   2. For the final node of a list, the link part is null.
+   //      Otherwise, the link part is a reference to the
+   //      next node of the list.
+   private float data;
+   private FloatNode link;   
+
+
+   /**
+   * Initialize a node with a specified initial data and link to the next
+   * node. Note that the initialLink may be the null reference, 
+   * which indicates that the new node has nothing after it.
+   * @param initialData
+   *   the initial data of this new node
+   * @param initialLink
+   *   a reference to the node after this new node--this reference may be null
+   *   to indicate that there is no node after this new node.
+   * @postcondition
+   *   This node contains the specified data and link to the next node.
+   **/   
+   public FloatNode(float initialData, FloatNode initialLink)
+   {
+      data = initialData;
+      link = initialLink;
+   }
+
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3
    /**
    * Modification method to add a new node after this node.   
    * @param item
@@ -365,3 +434,7 @@ public class FloatNode
    }
 }
            
+<<<<<<< HEAD
+=======
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3

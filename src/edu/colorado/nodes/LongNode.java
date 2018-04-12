@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // File: LongNode.java from the package edu.colorado.nodes
 // Complete documentation is available from the LongNode link in:
 //   http://www.cs.colorado.edu/~main/docs
@@ -63,6 +64,74 @@ public class LongNode
    }
 
 
+=======
+
+// File: LongNode.java from the package edu.colorado.nodes
+// Complete documentation is available from the LongNode link in:
+//   http://www.cs.colorado.edu/~main/docs
+
+package edu.colorado.nodes;
+
+/******************************************************************************
+* A LongNode provides a node for a linked list with 
+* long data in each node.
+*
+* @note
+*   Lists of nodes can be made of any length, limited only by the amount of
+*   free memory in the heap. But beyond Integer.MAX_VALUE (2,147,483,647),
+*   the answer from listLength is incorrect because of arithmetic
+*   overflow. 
+*
+* @see
+*   <A HREF="../../../../edu/colorado/nodes/LongNode.java">
+*   Java Source Code for this class
+*   (www.cs.colorado.edu/~main/edu/colorado/nodes/LongNode.java) </A>
+*
+* @author Michael Main 
+*   <A HREF="mailto:main@colorado.edu"> (main@colorado.edu) </A>
+*
+* @version Feb 10, 2016
+*
+* @see Node
+* @see BooleanNode
+* @see ByteNode
+* @see CharNode
+* @see DoubleNode
+* @see FloatNode
+* @see IntNode
+* @see ShortNode
+******************************************************************************/
+public class LongNode
+{
+   // Invariant of the LongNode class:
+   //   1. The node's long data is in the instance variable data.
+   //   2. For the final node of a list, the link part is null.
+   //      Otherwise, the link part is a reference to the
+   //      next node of the list.
+   private long data;
+   private LongNode link;   
+
+
+   /**
+   * Initialize a node with a specified initial data and link to the next
+   * node. Note that the initialLink may be the null reference, 
+   * which indicates that the new node has nothing after it.
+   * @param initialData
+   *   the initial data of this new node
+   * @param initialLink
+   *   a reference to the node after this new node--this reference may be null
+   *   to indicate that there is no node after this new node.
+   * @postcondition
+   *   This node contains the specified data and link to the next node.
+   **/   
+   public LongNode(long initialData, LongNode initialLink)
+   {
+      data = initialData;
+      link = initialLink;
+   }
+
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3
    /**
    * Modification method to add a new node after this node.   
    * @param item
@@ -364,4 +433,8 @@ public class LongNode
       link = newLink;
    }
 }
+<<<<<<< HEAD
            
+=======
+      
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3

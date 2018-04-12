@@ -479,7 +479,7 @@ public class EasyReader extends PushbackReader
    
    
    private static FileReader makeFileReader(String name)
-   // Create and return a FileReader to read from the named file. If the file doesn’t exist then print
+   // Create and return a FileReader to read from the named file. If the file doesnï¿½t exist then print
    // an error message and halt the program.
    {
       try

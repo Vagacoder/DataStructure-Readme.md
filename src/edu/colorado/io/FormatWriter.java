@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // File: FormatWriter.java from the package edu.colorado.io
 // Complete documentation is available from the FormatWriter link in:
 //   http://www.cs.colorado.edu/~main/docs
@@ -24,6 +25,35 @@ import java.text.NumberFormat;
 public class FormatWriter 
 {
 
+=======
+
+// File: FormatWriter.java from the package edu.colorado.io
+// Complete documentation is available from the FormatWriter link in:
+//   http://www.cs.colorado.edu/~main/docs
+package edu.colorado.io;
+
+import java.text.NumberFormat;
+
+/******************************************************************************
+* The <CODE>FormatWriter</CODE> class has a collection of static methods for
+* writing formatted output to System.out.
+* 
+* <b>Java Source Code for this class:</b>
+*   <A HREF="../../../../edu/colorado/io/FormatWriter.java">
+*   http://www.cs.colorado.edu/~main/edu/colorado/io/FormatWriter.java
+*   </A>
+*
+* @author 
+*   Michael Main (main@colorado.edu) with help from Judy Abbott.
+*
+* @version Feb 10, 2016
+*
+* @see EasyReader
+******************************************************************************/
+public class FormatWriter 
+{
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3
    // Note: getNumberInstance( ) creates a NumberFormat object using local
    // information about the characters for a decimal point and separators.
    private static NumberFormat form = NumberFormat.getNumberInstance( );

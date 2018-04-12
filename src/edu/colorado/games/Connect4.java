@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.colorado.games;
 import java.util.Vector;
 
@@ -62,6 +63,73 @@ public class Connect4 extends AbstractGame implements Cloneable
               moves.addElement(MOVE_STRINGS[i]);
       }
 
+=======
+
+package edu.colorado.games;
+import java.util.Vector;
+
+public class Connect4 extends AbstractGame implements Cloneable
+{
+   public static final int ROWS = 6;
+   public static final int COLUMNS = 7;
+   public static final int DEPTH = 4;
+     
+   // Private static member constants, defined here.
+   // The FOUR_VALUE is the value returned by
+   // the value function when it finds four-in-a-row. For the current
+   // implementation of evaluate to work, the FOUR_VALUE should be at least
+   // 24 times as large as the total number of spots on the board.
+   // MOVE_STRINGS is an array of all possible moves, which must be strings
+   // corresponding to the integers 0 through COLUMNS-1.
+   private static final int FOUR_VALUE = 24*ROWS*COLUMNS;
+   private static final String[ ] MOVE_STRINGS =
+      {"0", "1", "2", "3", "4", "5", "6"};
+
+   private Player[ ][ ] data = new Player[ROWS][COLUMNS];
+   private int[ ] manyUsed = new int[COLUMNS];
+   private int mostRecentColumn;
+
+   public static void main(String[ ] args)
+   {
+      repeatPlay("edu.colorado.games.Connect4", DEPTH);
+   }
+
+   protected Connect4 clone( )
+   {
+      Connect4 answer;
+      int i;
+
+      try
+      {
+         answer = (Connect4) super.clone( );
+      }
+      catch (Exception e)
+      {
+         throw new RuntimeException
+         ("This class does not implement Cloneable.");
+      }
+
+      // Make new copies of the data and manyUsed arrays:
+      answer.manyUsed = manyUsed.clone( );
+      answer.data = data.clone( );
+      for (i = 0; i < ROWS; i++)
+         answer.data[i] = data[i].clone( );
+
+      return answer;
+   }
+
+   protected Vector<String> computeMoves( )
+   {
+      Vector<String> moves = new Vector<String>( );
+      int i;
+	
+      for (i = 0; i < COLUMNS; i++)
+      {
+          if (manyUsed[i] < ROWS)
+              moves.addElement(MOVE_STRINGS[i]);
+      }
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3
       return moves;
    }
 

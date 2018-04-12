@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // File: BooleanStack.java from the package edu.colorado.collections
 // Complete documentation is available from the BooleanStack link in:
 //   http://www.cs.colorado.edu/~main/docs/
@@ -69,6 +70,80 @@ public class BooleanStack implements Cloneable
       data = new boolean[INITIAL_CAPACITY];
    }
 
+=======
+
+// File: BooleanStack.java from the package edu.colorado.collections
+// Complete documentation is available from the BooleanStack link in:
+//   http://www.cs.colorado.edu/~main/docs/
+
+package edu.colorado.collections;
+import java.util.EmptyStackException;
+
+/******************************************************************************
+* A <CODE>BooleanStack</CODE> is a stack of boolean values.
+*
+* <b>Limitations:</b>
+*   
+*   (1) The capacity of one of these stacks can change after it's created, but
+*   the maximum capacity is limited by the amount of free memory on the 
+*   machine. The constructor, <CODE>ensureCapacity</CODE>, <CODE>push</CODE>, 
+*   and <CODE>trimToSize</CODE> will result in an 
+*   <CODE>OutOfMemoryError</CODE> when free memory is exhausted.
+*   
+*   (2) A stack's capacity cannot exceed the maximum integer 2,147,483,647
+*   (<CODE>Integer.MAX_VALUE</CODE>). Any attempt to create a larger capacity
+*   results in a failure due to an arithmetic overflow. 
+*
+* <b>Java Source Code for this class:</b>
+*   <A HREF="../../../../edu/colorado/collections/BooleanStack.java">
+*   http://www.cs.colorado.edu/~main/edu/colorado/collections/BooleanStack.java
+*   </A>
+*
+* @author Michael Main 
+*   <A HREF="mailto:main@colorado.edu"> (main@colorado.edu) </A>
+*
+* @version Feb 10, 2016
+*
+* @see BooleanLinkedStack
+* @see ObjectStack
+* @see ByteStack
+* @see CharStack
+* @see DoubleStack
+* @see FloatStack
+* @see IntStack
+* @see LongStack
+* @see ShortStack
+******************************************************************************/
+public class BooleanStack implements Cloneable
+{
+   // Invariant of the BooleanStack class:
+   //   1. The number of items in the stack is in the instance variable manyItems.
+   //   2. For an empty stack, we do not care what is stored in any of data; for a
+   //      non-empty stack, the items in the stack are stored in a partially-filled array called
+   //      data, with the bottom of the stack at data[0], the next item at data[1], and so on
+   //      to the top of the stack at data[manyItems-1].
+   private boolean[ ] data;
+   private int manyItems; 
+
+
+   /**
+   * Initialize an empty stack with an initial capacity of 10.  Note that the
+   * <CODE>push</CODE> method works efficiently (without needing more
+   * memory) until this capacity is reached.
+   * <b>Postcondition:</b>
+   *   This stack is empty and has an initial capacity of 10.
+   * @exception OutOfMemoryError
+   *   Indicates insufficient memory for: 
+   *   <CODE>new boolean[10]</CODE>.
+   **/   
+   public BooleanStack( )
+   {
+      final int INITIAL_CAPACITY = 10;
+      manyItems = 0;
+      data = new boolean[INITIAL_CAPACITY];
+   }
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3
    
    /**
    * Initialize an empty stack with a specified initial capacity. Note that the

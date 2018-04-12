@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 // File: CharBTNode.java from the package edu.colorado.nodes
 // Complete documentation is available from the IntBTNode link in:
 //   http://www.cs.colorado.edu/~main/docs/
 
+=======
+
+// File: CharBTNode.java from the package edu.colorado.nodes
+// Complete documentation is available from the IntBTNode link in:
+//   http://www.cs.colorado.edu/~main/docs/
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3
 package edu.colorado.nodes;
 /******************************************************************************
 * A <CODE>CharBTNode</CODE> provides a node for a binary tree. Each node 
@@ -371,3 +379,7 @@ public class CharBTNode
 
 }
            
+<<<<<<< HEAD
+=======
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3

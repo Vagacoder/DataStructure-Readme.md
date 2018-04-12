@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // File: ObjectNode.java from the package edu.colorado.nodes
 // Complete documentation is available from the ObjectNode link in:
 //   http://www.cs.colorado.edu/~main/docs
@@ -207,6 +208,218 @@ public class ObjectNode
    }
    
 
+=======
+
+// File: ObjectNode.java from the package edu.colorado.nodes
+// Complete documentation is available from the ObjectNode link in:
+//   http://www.cs.colorado.edu/~main/docs
+
+package edu.colorado.nodes;
+
+/******************************************************************************
+* A ObjectNode provides a node for a linked list with 
+* Object data in each node.
+*
+* @note
+*   Lists of nodes can be made of any length, limited only by the amount of
+*   free memory in the heap. But beyond Integer.MAX_VALUE (2,147,483,647),
+*   the answer from listLength is incorrect because of arithmetic
+*   overflow. 
+*
+* @see
+*   <A HREF="../../../../edu/colorado/nodes/ObjectNode.java">
+*   Java Source Code for this class
+*   (www.cs.colorado.edu/~main/edu/colorado/nodes/ObjectNode.java) </A>
+*
+* @author Michael Main 
+*   <A HREF="mailto:main@colorado.edu"> (main@colorado.edu) </A>
+*
+* @version Feb 10, 2016
+*
+* @see Node
+* @see BooleanNode
+* @see CharNode
+* @see DoubleNode
+* @see FloatNode
+* @see IntNode
+* @see LongNode
+* @see ShortNode
+******************************************************************************/
+public class ObjectNode
+{
+   // Invariant of the ObjectNode class:
+   //   1. The node's Object data is in the instance variable data.
+   //   2. For the final node of a list, the link part is null.
+   //      Otherwise, the link part is a reference to the
+   //      next node of the list.
+   private Object data;
+   private ObjectNode link;   
+
+
+   /**
+   * Initialize a node with a specified initial data and link to the next
+   * node. Note that the initialLink may be the null reference, 
+   * which indicates that the new node has nothing after it.
+   * @param initialData
+   *   the initial data of this new node
+   * @param initialLink
+   *   a reference to the node after this new node--this reference may be null
+   *   to indicate that there is no node after this new node.
+   * @postcondition
+   *   This node contains the specified data and link to the next node.
+   **/   
+   public ObjectNode(Object initialData, ObjectNode initialLink)
+   {
+      data = initialData;
+      link = initialLink;
+   }
+
+
+   /**
+   * Modification method to add a new node after this node.   
+   * @param item
+   *   the data to place in the new node
+   * @postcondition
+   *   A new node has been created and placed after this node.
+   *   The data for the new node is item. Any other nodes
+   *   that used to be after this node are now after the new node.
+   * @exception OutOfMemoryError
+   *   Indicates that there is insufficient memory for a new 
+   *   ObjectNode. 
+   **/
+   public void addNodeAfter(Object item)   
+   {
+      link = new ObjectNode(item, link);
+   }          
+   
+   
+   /**
+   * Accessor method to get the data from this node.   
+   * @return
+   *   the data from this node
+   **/
+   public Object getData( )   
+   {
+      return data;
+   }
+   
+   
+   /**
+   * Accessor method to get a reference to the next node after this node. 
+   * @return
+   *   a reference to the node after this node (or the null reference if there
+   *   is nothing after this node)
+   **/
+   public ObjectNode getLink( )
+   {
+      return link;                                               
+   } 
+    
+    
+   /**
+   * Copy a list.
+   * @param source
+   *   the head of a linked list that will be copied (which may be
+   *   an empty list in where source is null)
+   * @return
+   *   The method has made a copy of the linked list starting at 
+   *   source. The return value is the head reference for the
+   *   copy. 
+   * @exception OutOfMemoryError
+   *   Indicates that there is insufficient memory for the new list.   
+   **/ 
+   public static ObjectNode listCopy(ObjectNode source)
+   {
+      ObjectNode copyHead;
+      ObjectNode copyTail;
+      
+      // Handle the special case of the empty list.
+      if (source == null)
+         return null;
+         
+      // Make the first node for the newly created list.
+      copyHead = new ObjectNode(source.data, null);
+      copyTail = copyHead;
+      
+      // Make the rest of the nodes for the newly created list.
+      while (source.link != null)
+      {
+         source = source.link;
+         copyTail.addNodeAfter(source.data);
+         copyTail = copyTail.link;
+      }
+ 
+      // Return the head reference for the new list.
+      return copyHead;
+   }
+   
+   
+   /**
+   * Copy a list, returning both a head and tail reference for the copy.
+   * @param source
+   *   the head of a linked list that will be copied (which may be
+   *   an empty list in where source is null)
+   * @return
+   *   The method has made a copy of the linked list starting at 
+   *   source.  The return value is an
+   *   array where the [0] element is a head reference for the copy and the [1]
+   *   element is a tail reference for the copy.
+   * @exception OutOfMemoryError
+   *   Indicates that there is insufficient memory for the new list.   
+   **/
+   public static ObjectNode[ ] listCopyWithTail(ObjectNode source)
+   {
+      ObjectNode copyHead;
+      ObjectNode copyTail;
+      ObjectNode[ ] answer = new ObjectNode[2];
+     
+      // Handle the special case of the empty list.   
+      if (source == null)
+         return answer; // The answer has two null references .
+      
+      // Make the first node for the newly created list.
+      copyHead = new ObjectNode(source.data, null);
+      copyTail = copyHead;
+      
+      // Make the rest of the nodes for the newly created list.
+      while (source.link != null)
+      {
+         source = source.link;
+         copyTail.addNodeAfter(source.data);
+         copyTail = copyTail.link;
+      }
+      
+      // Return the head and tail references.
+      answer[0] = copyHead;
+      answer[1] = copyTail;
+      return answer;
+   }
+   
+   
+   /**
+   * Compute the number of nodes in a linked list.
+   * @param head
+   *   the head reference for a linked list (which may be an empty list
+   *   with a null head)
+   * @return
+   *   the number of nodes in the list with the given head 
+   * @note
+   *   A wrong answer occurs for lists longer than Int.MAX_VALUE.     
+   **/   
+   public static int listLength(ObjectNode head)
+   {
+      ObjectNode cursor;
+      int answer;
+      
+      answer = 0;
+      for (cursor = head; cursor != null; cursor = cursor.link)
+         answer++;
+        
+      return answer;
+   }
+   
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3
    /**
    * Copy part of a list, providing a head and tail reference for the new copy. 
    * @precondition
@@ -364,4 +577,8 @@ public class ObjectNode
       link = newLink;
    }
 }
+<<<<<<< HEAD
            
+=======
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3

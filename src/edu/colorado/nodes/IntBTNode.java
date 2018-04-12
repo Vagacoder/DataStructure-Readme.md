@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // File: IntBTNode.java from the package edu.colorado.nodes
 // Complete documentation is available from the IntBTNode link in:
 //   http://www.cs.colorado.edu/~main/docs
@@ -242,6 +243,253 @@ public class IntBTNode
    }
    
 
+=======
+
+// File: IntBTNode.java from the package edu.colorado.nodes
+// Complete documentation is available from the IntBTNode link in:
+//   http://www.cs.colorado.edu/~main/docs
+
+package edu.colorado.nodes;
+
+/******************************************************************************
+* A <CODE>IntBTNode</CODE> provides a node for a binary tree. Each node 
+* contains a piece of data (which is a reference to an object) and references
+* to a left and right child. The references to children may be null to indicate
+* that there is no child. The reference stored in a node can also be null.
+*
+* <b>Limitations:</b> 
+*   Beyond <CODE>Int.MAX_VALUE</CODE> elements, <CODE>treeSize</CODE>, is
+*   wrong. 
+*
+* <b>Java Source Code for this class:</b>
+*   <A HREF="../../../../edu/colorado/nodes/IntBTNode.java">
+*   http://www.cs.colorado.edu/~main/edu/colorado/nodes/IntBTNode.java </A>
+*
+* @author Michael Main 
+*   <A HREF="mailto:main@colorado.edu"> (main@colorado.edu) </A>
+*
+* @version Feb 10, 2016
+*
+* @see BTNode
+* @see BooleanBTNode
+* @see ByteBTNode
+* @see CharBTNode
+* @see DoubleBTNode
+* @see FloatBTNode
+* @see LongBTNode
+* @see ShortBTNode
+******************************************************************************/
+public class IntBTNode
+{
+   // Invariant of the IntBTNode class:
+   //   1. Each node has one integer, stored in the instance
+   //      variable data.
+   //   2. The instance variables left and right are references to the node's
+   //      left and right children.
+   private int data;
+   private IntBTNode left, right;   
+
+   /**
+   * Initialize a <CODE>IntBTNode</CODE> with a specified initial data and links
+   * children. Note that a child link may be the null reference, 
+   * which indicates that the new node does not have that child.
+   * @param initialData
+   *   the initial data of this new node
+   * @param initialLeft
+   *   a reference to the left child of this new node--this reference may be null
+   *   to indicate that there is no node after this new node.
+   * @param initialRight
+   *   a reference to the right child of this new node--this reference may be null
+   *   to indicate that there is no node after this new node.
+   * <b>Postcondition:</b>
+   *   This node contains the specified data and links to its children.
+   **/   
+   public IntBTNode(int initialData, IntBTNode initialLeft, IntBTNode initialRight)
+   {
+      data = initialData;
+      left = initialLeft;
+      right = initialRight;
+   }       
+   
+   
+   /**
+   * Accessor method to get the data from this node.   
+   * @return
+   *   the data from this node
+   **/
+   public int getData( )   
+   {
+      return data;
+   }
+   
+   
+   /**
+   * Accessor method to get a reference to the left child of this node. 
+   * @return
+   *   a reference to the left child of this node (or the null reference if there
+   *   is no left child)
+   **/
+   public IntBTNode getLeft( )
+   {
+      return left;                                               
+   } 
+   
+   
+   /**
+   * Accessor method to get the data from the leftmost node of the tree below 
+   * this node.
+   * @return
+   *   the data from the deepest node that can be reached from this node by
+   *   following left links.
+   **/
+   public int getLeftmostData( )
+   {
+      if (left == null)
+         return data;
+      else
+         return left.getLeftmostData( );
+   }
+      
+   
+   /**
+   * Accessor method to get the data from the rightmost node of the tree below 
+   * this node.
+   * @return
+   *   the data from the deepest node that can be reached from this node by
+   *   following right links.
+   **/
+   public int getRightmostData( )
+   {
+      if (right == null)
+         return data;
+      else
+         return right.getRightmostData( );
+   }
+   
+   
+   /**
+   * Accessor method to get a reference to the right child of this node. 
+   * @return
+   *   a reference to the right child of this node (or the null reference if there
+   *   is no right child)
+   **/
+   public IntBTNode getRight( )
+   {
+      return right;                                               
+   } 
+
+
+   /**
+   * Uses an inorder traversal to print the data from each node at or below
+   * this node of the binary tree.
+   * <b>Postcondition:</b>
+   *   The data of this node and all its descendants have been writeen by
+   *   <CODE>System.out.println( )</CODE> using an inorder traversal.
+   **/
+   public void inorderPrint( )
+   {
+      if (left != null)
+         left.inorderPrint( );
+      System.out.println(data);
+      if (right != null)
+         right.inorderPrint( );
+   }  
+
+   
+   /**
+   * Accessor method to determine whether a node is a leaf. 
+   * @return
+   *   <CODE>true</CODE> (if this node is a leaf) or 
+   *   <CODE>false</CODE> (if this node is not a leaf.
+   **/
+   public boolean isLeaf( )
+   {
+      return (left == null) && (right == null);                                               
+   } 
+
+
+   /**
+   * Uses a preorder traversal to print the data from each node at or below
+   * this node of the binary tree.
+   * <b>Postcondition:</b>
+   *   The data of this node and all its descendants have been writeen by
+   *   <CODE>System.out.println( )</CODE> using a preorder traversal.
+   **/
+   public void preorderPrint( )
+   {
+      System.out.println(data);
+      if (left != null)
+         left.preorderPrint( );
+      if (right != null)
+         right.preorderPrint( );
+   } 
+   
+      
+   /**
+   * Uses a postorder traversal to print the data from each node at or below
+   * this node of the binary tree.
+   * <b>Postcondition:</b>
+   *   The data of this node and all its descendants have been writeen by
+   *   <CODE>System.out.println( )</CODE> using a postorder traversal.
+   **/
+   public void postorderPrint( )
+   {
+      if (left != null)
+         left.postorderPrint( );
+      if (right != null)
+         right.postorderPrint( );
+      System.out.println(data);
+   }   
+
+
+   /**
+   * Uses an inorder traversal to print the data from each node at or below
+   * this node of the binary tree, with indentations to indicate the depth
+   * of each node.
+   * @param depth
+   *   the depth of this node (with 0 for root, 1 for the root's
+   *   children, and so on)(
+   * <b>Precondition:</b>
+   *   <CODE>depth</CODE> is the depth of this node.
+   * <b>Postcondition:</b>
+   *   The data of this node and all its descendants have been writeen by
+   *   <CODE>System.out.println( )</CODE> using an inorder traversal.
+   *   The indentation of each line of data is four times its depth in the
+   *   tree. A dash "--" is printed at any place where a child has no
+   *   sibling.
+   **/
+   public void print(int depth)
+   {
+      int i;
+   
+      // Print the indentation and the data from the current node:
+      for (i = 1; i <= depth; i++)
+         System.out.print("    ");
+      System.out.println(data);
+
+      // Print the left subtree (or a dash if there is a right child and no left child)   
+      if (left != null)
+         left.print(depth+1);
+      else if (right != null)
+      {
+         for (i = 1; i <= depth+1; i++)
+            System.out.print("    ");
+         System.out.println("--");
+      }
+
+      // Print the right subtree (or a dash if there is a left child and no left child)  
+      if (right != null)
+         right.print(depth+1);
+      else if (left != null)
+      {
+         for (i = 1; i <= depth+1; i++)
+            System.out.print("    ");
+         System.out.println("--");
+      }
+   }
+   
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3
    /**
    * Remove the leftmost most node of the tree below this node.
    * @return
@@ -372,3 +620,7 @@ public class IntBTNode
 
 }
            
+<<<<<<< HEAD
+=======
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3

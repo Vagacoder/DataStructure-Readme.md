@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // File: BTNode.java from the package edu.colorado.nodes
 // Complete documentation is available from the BTNode link in:
 //   http://www.cs.colorado.edu/~main/docs/
@@ -185,6 +186,196 @@ public class BTNode<E>
       System.out.println(data);
    }   
 
+=======
+
+// File: BTNode.java from the package edu.colorado.nodes
+// Complete documentation is available from the BTNode link in:
+//   http://www.cs.colorado.edu/~main/docs/
+
+package edu.colorado.nodes;
+
+/******************************************************************************
+* A <CODE>BTNode</CODE> provides a node for a binary tree. Each node 
+* contains a piece of data (which is a reference to an E object) and references
+* to a left and right child. The references to children may be null to indicate
+* that there is no child. The reference stored in a node can also be null.
+*
+* <b>Limitations:</b> 
+*   Beyond <CODE>Int.MAX_VALUE</CODE> elements, <CODE>treeSize</CODE>, is
+*   wrong.
+*
+* <b>Java Source Code for this class:</b>
+*   <A HREF="../../../../edu/colorado/nodes/BTNode.java">
+*   http://www.cs.colorado.edu/~main/edu/colorado/nodes/BTNode.java </A>
+*
+* @author Michael Main 
+*   <A HREF="mailto:main@colorado.edu"> (main@colorado.edu) </A>
+*
+* @version Feb 10, 2016
+******************************************************************************/
+public class BTNode<E>
+{
+   // Invariant of the BTNode<E> class:
+   //   1. Each node has one reference to an E Object, stored in the instance
+   //      variable data.
+   //   2. The instance variables left and right are references to the node's
+   //      left and right children.
+   private E data;
+   private BTNode<E> left, right;   
+
+   /**
+   * Initialize a <CODE>BTNode</CODE> with a specified initial data and links
+   * children. Note that a child link may be the null reference, 
+   * which indicates that the new node does not have that child.
+   * @param initialData
+   *   the initial data of this new node
+   * @param initialLeft
+   *   a reference to the left child of this new node--this reference may be null
+   *   to indicate that there is no node after this new node.
+   * @param initialRight
+   *   a reference to the right child of this new node--this reference may be null
+   *   to indicate that there is no node after this new node.
+   * <b>Postcondition:</b>
+   *   This node contains the specified data and links to its children.
+   **/   
+   public BTNode(E initialData, BTNode<E> initialLeft, BTNode<E> initialRight)
+   {
+      data = initialData;
+      left = initialLeft;
+      right = initialRight;
+   }       
+   
+   
+   /**
+   * Accessor method to get the data from this node.   
+   * @return
+   *   the data from this node
+   **/
+   public E getData( )   
+   {
+      return data;
+   }
+   
+   
+   /**
+   * Accessor method to get a reference to the left child of this node. 
+   * @return
+   *   a reference to the left child of this node (or the null reference if there
+   *   is no left child)
+   **/
+   public BTNode<E> getLeft( )
+   {
+      return left;                                               
+   } 
+   
+   
+   /**
+   * Accessor method to get the data from the leftmost node of the tree below 
+   * this node.
+   * @return
+   *   the data from the deepest node that can be reached from this node by
+   *   following left links.
+   **/
+   public E getLeftmostData( )
+   {
+      if (left == null)
+         return data;
+      else
+         return left.getLeftmostData( );
+   }
+      
+   
+   /**
+   * Accessor method to get a reference to the right child of this node. 
+   * @return
+   *   a reference to the right child of this node (or the null reference if there
+   *   is no right child)
+   **/
+   public BTNode<E> getRight( )
+   {
+      return right;                                               
+   } 
+
+
+   /**
+   * Accessor method to get the data from the rightmost node of the tree below 
+   * this node.
+   * @return
+   *   the data from the deepest node that can be reached from this node by
+   *   following right links.
+   **/
+   public E getRightmostData( )
+   {
+      if (left == null)
+         return data;
+      else
+         return left.getRightmostData( );
+   }
+   
+   
+   /**
+   * Uses an inorder traversal to print the data from each node at or below
+   * this node of the binary tree.
+   * <b>Postcondition:</b>
+   *   The data of this node and all its descendants have been writeen by
+   *   <CODE>System.out.println( )</CODE> using an inorder traversal.
+   **/
+   public void inorderPrint( )
+   {
+      if (left != null)
+         left.inorderPrint( );
+      System.out.println(data);
+      if (right != null)
+         right.inorderPrint( );
+   }  
+
+   
+   /**
+   * Accessor method to determine whether a node is a leaf. 
+   * @return
+   *   <CODE>true</CODE> (if this node is a leaf) or 
+   *   <CODE>false</CODE> (if this node is not a leaf.
+   **/
+   public boolean isLeaf( )
+   {
+      return (left == null) && (right == null);                                               
+   } 
+
+
+   /**
+   * Uses a preorder traversal to print the data from each node at or below
+   * this node of the binary tree.
+   * <b>Postcondition:</b>
+   *   The data of this node and all its descendants have been writeen by
+   *   <CODE>System.out.println( )</CODE> using a preorder traversal.
+   **/
+   public void preorderPrint( )
+   {
+      System.out.println(data);
+      if (left != null)
+         left.preorderPrint( );
+      if (right != null)
+         right.preorderPrint( );
+   } 
+   
+      
+   /**
+   * Uses a postorder traversal to print the data from each node at or below
+   * this node of the binary tree.
+   * <b>Postcondition:</b>
+   *   The data of this node and all its descendants have been writeen by
+   *   <CODE>System.out.println( )</CODE> using a postorder traversal.
+   **/
+   public void postorderPrint( )
+   {
+      if (left != null)
+         left.postorderPrint( );
+      if (right != null)
+         right.postorderPrint( );
+      System.out.println(data);
+   }   
+
+>>>>>>> e8e3b4a50d32f3cf0d04b2e6eadd78048c56bfd3
 
    /**
    * Uses an inorder traversal to print the data from each node at or below
