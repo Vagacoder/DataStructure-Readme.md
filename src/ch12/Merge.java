@@ -5,7 +5,7 @@ public class Merge {
 	public static void main(String[] args) {
 		final String BLANKS = " ";
 		int i;
-		int[] data1 = { 80, 10, 50, 70, 60, 90, 20, 30, 40, 0 };
+		//int[] data = { 80, 10, 50, 70, 60, 90, 20, 30, 40, 0 };
 		int[] data = {   20,10, 30,50,  40,60, 90,80,  70, 0 };
 		// int[] data = {};
 		System.out.println("Here is the original array:");
