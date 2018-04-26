@@ -12,8 +12,8 @@ public class Quick {
 		// int[] data = { 40, 20, 10, 80, 60, 50, 7, 30, 100, 90, 70 };
 		// int[] data = {};
 
-		//int[] data = { 20, 10 };
-		 int[] data = {40, 50};
+		int[] data = { 20, 10 };
+		// int[] data = {40, 50};
 		System.out.println("Here is the original array:");
 		for (i = 0; i < data.length; i++)
 			System.out.print(data[i] + BLANKS);
@@ -31,7 +31,7 @@ public class Quick {
 		int n1;
 		int n2;
 		if (n > 1) {
-			pivotIndex = partition1(data, first, first + n - 1);
+			pivotIndex = partition(data, first, first + n - 1);
 			n1 = pivotIndex - first;
 			n2 = n - n1 - 1;
 			quicksort(data, first, n1);
@@ -57,7 +57,6 @@ public class Quick {
 				data[tooBigIndex] = data[tooSmallIndex];
 				data[tooSmallIndex] = temp;
 			}
-
 		}
 
 		data[first] = data[tooSmallIndex];
