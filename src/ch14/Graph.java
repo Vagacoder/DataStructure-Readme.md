@@ -7,43 +7,35 @@ public class Graph<E> implements Cloneable {
 	private boolean[][] edges; // adjacency matrix for edges
 	private E[] labels; // vertex labels in an array
 
-
 	@SuppressWarnings("unchecked")
 	public Graph(int n) {
 		edges = new boolean[n][n];
 		labels = (E[]) new Object[n];
 	}
 
-
 	public void addEdge(int source, int target) {
 		edges[source][target] = true;
 	}
-
 
 	public void removeEdge(int source, int target) {
 		edges[source][target] = false;
 	}
 
-
 	public boolean isEdge(int source, int target) {
 		return edges[source][target];
 	}
-
 
 	public E getLabel(int vertex) {
 		return labels[vertex];
 	}
 
-
 	public void setLabel(int vertex, E label) {
 		labels[vertex] = label;
 	}
 
-
 	public int size() {
 		return edges.length;
 	}
-
 
 	public Graph<E> clone() throws CloneNotSupportedException {
 		@SuppressWarnings("unchecked")
@@ -52,7 +44,6 @@ public class Graph<E> implements Cloneable {
 		result.labels = labels.clone();
 		return result;
 	}
-
 
 	public int[] neighbors(int vertex) {
 		int count;
@@ -74,7 +65,6 @@ public class Graph<E> implements Cloneable {
 		return answer;
 	}
 
-
 	public int[] neighbors1(int vertex) {
 		ArrayList<Integer> result = new ArrayList<>();
 
@@ -92,7 +82,6 @@ public class Graph<E> implements Cloneable {
 
 		return resultArray;
 	}
-
 
 	public void removeVertex(int k) {
 		if (k > labels.length) {
@@ -112,11 +101,9 @@ public class Graph<E> implements Cloneable {
 		edges = newEdges;
 	}
 
-
 	public void addVertex(int k) {
 
 	}
-
 
 	public void interChange(int i, int j) {
 		E temp = labels[i];
@@ -135,7 +122,6 @@ public class Graph<E> implements Cloneable {
 
 	}
 
-
 	public static <E> int findMaxEdges(Graph<E> g) {
 		int maxEdges = 0;
 		int indexOfMaxEdges = 0;
@@ -150,12 +136,10 @@ public class Graph<E> implements Cloneable {
 		return indexOfMaxEdges;
 	}
 
-
 	public static <E> void depthFirstPrint(Graph<E> g, int start) {
 		boolean[] visited = new boolean[g.size()];
 		depthFirstRecurse(g, start, visited);
 	}
-
 
 	public static <E> void depthFirstRecurse(Graph<E> g, int v, boolean[] visited) {
 		int[] connections = g.neighbors(v);
@@ -168,20 +152,39 @@ public class Graph<E> implements Cloneable {
 		}
 	}
 
-
 	public static <E> void breadthFirstPrint(Graph<E> g, int start) {
 		Queue<Integer> visiting = new LinkedList<>();
 		boolean[] visited = new boolean[g.size()];
 		int current = start;
-		visiting.add(current);
+		visiting.add(start);
 		while (!visiting.isEmpty()) {
 			current = visiting.remove();
-			if (!visited[current]) {
-				visited[current] = true;
-				System.out.println(g.getLabel(current));
-				int[] neighbors = g.neighbors(current);
-				for (int neighbor : neighbors) {
+			visited[current] = true;
+			System.out.println(g.getLabel(current));
+			int[] neighbors = g.neighbors(current);
+			for (int neighbor : neighbors) {
+				if (!visited[neighbor]) {
 					visiting.add(neighbor);
+				}
+			}
+		}
+	}
+	
+	public static <E> void depthFirstPrint1(Graph<E> g, int start) {
+		Stack<Integer> visiting = new Stack<>();
+		boolean[] visited = new boolean[g.size()];
+		int current = start;
+		visiting.push(start);
+		while (!visiting.isEmpty()) {
+			current = visiting.pop();
+			if (visited[current]) {continue;}
+			visited[current] = true;
+			System.out.println(g.getLabel(current));
+			int[] neighbors = g.neighbors(current);
+			for (int i = neighbors.length-1; i >= 0; i--) {
+				int neighbor = neighbors[i];
+				if (!visited[neighbor]) {
+					visiting.push(neighbor);
 				}
 			}
 		}

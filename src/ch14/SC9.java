@@ -22,18 +22,23 @@ public class SC9 {
 		g1.addEdge(5, 6);
 		g1.addEdge(4, 6);
 		g1.addEdge(6, 4);
+		g1.addEdge(6, 7);
 		g1.addEdge(7, 4);
 		g1.addEdge(3, 7);
 		g1.addEdge(7, 8);
 		g1.addEdge(8, 7);
 
-		int[] neighbor4 = g1.neighbors(4);
-		for (int vertex : neighbor4) {
-			System.out.println(g1.getLabel(vertex));
-		}
+//		int[] neighbor4 = g1.neighbors(6);
+//		for (int vertex : neighbor4) {
+//			System.out.println(g1.getLabel(vertex));
+//		}
 
+		//System.out.println();
+		//Graph.breadthFirstPrint(g1, 6);
 		System.out.println();
-		Graph.breadthFirstPrint(g1, 4);
+		Graph.depthFirstPrint(g1, 6);
+		System.out.println();
+		Graph.depthFirstPrint1(g1, 6);
 	}
 
 }

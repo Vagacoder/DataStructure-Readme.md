@@ -26,8 +26,8 @@ public class GraphTester {
 			System.out.println(vertex);
 		}
 
-		// Graph.depthFirstPrint(g1, 0);
-		Graph.breadthFirstPrint(g1, 0);
+		 Graph.depthFirstPrint(g1, 0);
+		//Graph.breadthFirstPrint(g1, 0);
 	}
 
 }
