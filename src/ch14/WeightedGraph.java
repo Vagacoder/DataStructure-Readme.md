@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 /**
  * This class is to a weighted graph class, which is used for path finding
- * algorithmn, Such as Dijkstra algorithmn.
+ * algorithm, Such as Dijkstra algorithm.
  * 
  * @author QH
  *
@@ -13,7 +13,6 @@ import java.util.HashSet;
 public class WeightedGraph<E> {
 	private double[][] WeightedEdges; // adjacency matrix for weighted edges
 	private E[] labels; // vertex labels in an array
-
 
 	/**
 	 * Constructor
@@ -25,7 +24,7 @@ public class WeightedGraph<E> {
 	@SuppressWarnings("unchecked")
 	public WeightedGraph(int n) {
 		WeightedEdges = new double[n][n]; // adjacency matrix for weighted edges
-		for (double[] row : WeightedEdges) { // all edges are set to infinity
+		for (double[] row : WeightedEdges) { // all edges' weights are set to infinity
 			for (int i = 0; i < row.length; i++) {
 				row[i] = Double.POSITIVE_INFINITY;
 			}
@@ -35,31 +34,48 @@ public class WeightedGraph<E> {
 
 	}
 
-
+	/**
+	 * Add a new edge
+	 * 
+	 * @param source
+	 *            the source vertex
+	 * @param target
+	 *            the ending vertex
+	 * @param distance
+	 *            the weight of edge
+	 */
 	public void addEdge(int source, int target, double distance) {
 		WeightedEdges[source][target] = distance;
 	}
 
-
+	// remove an edge
 	public void removeEdge(int source, int target) {
 		WeightedEdges[source][target] = Double.POSITIVE_INFINITY;
 	}
 
-
+	/**
+	 * A method to judge whether there is a path between two vertices
+	 * 
+	 * @param source
+	 *            the source vertex
+	 * @param target
+	 *            the ending vertex
+	 * @return if there is a path (non infinity weight) between two vertices, return
+	 *         true; else return false
+	 */
 	public boolean isEdge(int source, int target) {
 		return WeightedEdges[source][target] != Double.POSITIVE_INFINITY && WeightedEdges[source][target] >= 0;
 	}
 
-
+	// return the label of a vertex
 	public E getLabel(int vertex) {
 		return labels[vertex];
 	}
 
-
+	// set the label of a vertex
 	public void setLabel(int vertex, E label) {
 		labels[vertex] = label;
 	}
-
 
 	/**
 	 * Return the size of graph, the number of vertices
@@ -71,7 +87,15 @@ public class WeightedGraph<E> {
 		return WeightedEdges.length;
 	}
 
-
+	/**
+	 * return an array list (integer) of vertices which is connected with parameter
+	 * vertex through a path (non infinity)
+	 * 
+	 * @param vertex
+	 *            the source vertex to be checked
+	 * @return an array list (integer) of vertices which is connected with parameter
+	 *         vertex
+	 */
 	public int[] neighbors(int vertex) {
 		int count = 0;
 		for (int i = 0; i < labels.length; i++) {
@@ -89,11 +113,16 @@ public class WeightedGraph<E> {
 		return answer;
 	}
 
-
 	/**
 	 * Dijkstra algorithm which is based on Data Structure Using Java 4e
 	 * 
 	 * @param start
+	 *            the starting vertex
+	 * @param destination
+	 *            the destination vertex
+	 * @return the shortest distance between start and destination. if return the
+	 *         local variable distances (double[]), it contains the shortest
+	 *         distance from start to all other vertices
 	 */
 
 	public double DijkstraPathFinder(int start, int destination) {
@@ -148,7 +177,6 @@ public class WeightedGraph<E> {
 		}
 		return distances[destination];
 	}
-
 
 	/**
 	 * Dijkstra algorithm which is based on CS106 guidebook If this method return
